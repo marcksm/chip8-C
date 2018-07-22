@@ -1,9 +1,13 @@
-all: mem.o
-	gcc -o chip8 objects/mem.o
+CC=gcc
+DEPS = src/*.h
+OBJ = mem.o
 
-mem.o: src/mem.c src/mem.h src/global.h
+chip8: $(OBJ)
+	$(CC) -o $@ objects/$^
+
+%.o: ./src/%.c $(DEPS)
 	mkdir objects
-	gcc -c src/mem.c -o ./objects/$@
+	$(CC) -c -o ./objects/$@ $<
 
 clean:
 	rm objects -rf
