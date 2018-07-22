@@ -7,5 +7,4 @@
 
 byte *memory;
 
-
 #endif
